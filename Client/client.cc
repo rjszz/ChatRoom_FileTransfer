@@ -1,4 +1,6 @@
 #include "client.h"
+#include<iostream>
+using namespace std;
 
 void Client::Error(const char* message)
 {
@@ -39,14 +41,28 @@ void Client::Connet()
 
 void Client::handle()
 {
-    printf("send msg to server: \n");
-    fgets(sendline, MAXLINE, stdin);
-    if( send(sockfd, sendline, strlen(sendline), 0) < 0)
-        Error("send msg error: %s(errno: %d)\n");
-    // {
-    //     printf("send msg error: %s(errno: %d)\n", strerror(errno), errno);
-    //     return 0;
-    // }
+    printf("Please enter 'exit' to exit the program\n");
+    char* recvbuf=new char[MAXLINE]; 
+    while(1)
+    {
+        printf("$");
+
+        fgets(sendline, MAXLINE, stdin);
+        sendline[strlen(sendline)-1]='\0';
+        if(sendline[0]=='\0') continue;
+        else if(strcmp(sendline,"exit")==0) break;
+
+        if( send(sockfd, sendline, strlen(sendline), 0) < 0)
+            Error("send msg error: %s(errno: %d)\n");
+        
+        int n = recv(sockfd, recvbuf,MAXLINE, 0);
+        recvbuf[n]='\0';
+         printf("recv msg from server: %s\n", recvbuf);
+
+         memset(sendline,0,strlen(sendline));
+         memset(sendline,0,strlen(recvbuf));
+    }
+    delete [] recvbuf;
 }
 
 void Client::start()
