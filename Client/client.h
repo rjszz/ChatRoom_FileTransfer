@@ -12,7 +12,7 @@ class Client
         int port;
         struct sockaddr_in  servaddr;
 
-         void Error(const char*);
+        //  void Error(const char*);
     
     public:
         Client(char* IP,int Po=8000):ip(IP),port(Po)

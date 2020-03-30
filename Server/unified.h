@@ -8,5 +8,9 @@
 #include<unistd.h>
 #include<netinet/in.h>
 #include<arpa/inet.h>
+#include<thread>
 
 enum {MAXLINE=4096};
+
+void Error(const char*);
+void Connect(int connfd,sockaddr_in cliaddr);

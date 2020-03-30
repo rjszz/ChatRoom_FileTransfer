@@ -2,11 +2,11 @@
 #include<iostream>
 using namespace std;
 
-void Client::Error(const char* message)
-{
-    printf(message,strerror(errno),errno);
-    exit(0);
-}
+// void Client::Error(const char* message)
+// {
+//     printf(message,strerror(errno),errno);
+//     exit(0);
+// }
 
 void Client::Socket()
 {
