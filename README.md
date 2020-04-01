@@ -18,15 +18,15 @@
 
    客户端
 
-   定义了Socket(),Connet(),handle(),start(),stop()5个类方法，分别用来进行Socket初始化以及连接，启动和停止
+   定义了Socket(),Connect(),handle(),start(),stop()5个类方法，分别用来进行Socket初始化以及连接，启动和停止
 
-   同样的`handel`是Clien的动作，这里是向服务器发送一段话，需要更改的可以在此方法中进行更改可以扩充
+   同样的`handel`是Client的动作，这里是向服务器发送一段话，需要更改的可以在此方法中进行更改可以扩充
 
 ## 使用
 
    - 1、分别在`Server`与`Client`目录下 下使用 `make`,来进行编译
-   - 2、先使用`./server` 来开始服务器程序，可以将此文件夹部署在服务器
-   - 3、再使用 `./client <ip address> <port>`来启动客户端程序，其中`<ip address>`是ip地址，如果是本地，请填写`127.0.0.1`,`<port>`是服务器的端口
+   - 2、先使用`./server <port>` 来开始服务器程序，其中`<port>`是通信端口，可选填，默认为`8000`,可以将此文件夹部署在服务器
+   - 3、再使用 `./client <ip address> <port>`来启动客户端程序，其中`<ip address>`是ip地址，如果是本地，请填写`127.0.0.1`;`<port>`是服务器的端口
 
 
 
