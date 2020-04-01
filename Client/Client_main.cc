@@ -10,6 +10,6 @@ int main(int argc, char** argv)
     cli->start();
     cli->handle();
     cli->stop();
-
+pthread_exit(NULL);
 return 0;
 }

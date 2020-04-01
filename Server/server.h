@@ -12,7 +12,6 @@ class Server
         //char*  buff;
         int port;
         int maxsize;
-    
         // void Error(const char*);
 
 

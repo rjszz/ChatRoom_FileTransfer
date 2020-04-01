@@ -62,10 +62,10 @@ void Server::Handle()
 
            if( (connfd = accept(listenfd,(struct sockaddr*)&cliaddr,&addrlen)) == -1){
             printf("accept socket error: %s(errno: %d)",strerror(errno),errno);
-            return;
-        }
-        std::thread mythread(Connect,connfd,cliaddr);
-        mythread.detach();
+            return;}
+
+            std::thread mythread(Connect,connfd,cliaddr);
+            mythread.detach();
         // int n = recv(connfd, buff, MAXLINE, 0);
         // if(n==0)
         // {
@@ -79,7 +79,7 @@ void Server::Handle()
         // printf("recv msg from client: %s\n", buff);
         //  memset(buff,0,strlen(buff));
         
-    }
+         }
     close(connfd);
 }
 
