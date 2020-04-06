@@ -36,12 +36,35 @@ void Client::handle()
      printf("Please enter a nickname:");
      fgets(sendline, MAXLINE, stdin);
      sendline[strlen(sendline)-1]='\0';
-    }while(sendline[0]=='\0');
-     if( send(sockfd, sendline, strlen(sendline), 0) < 0) //发送用户名
+     if(sendline[0]=='\0') continue;
+
+     //发送用户名并接收回应
+     if( send(sockfd, sendline, strlen(sendline), 0) < 0) 
             Error("send msg error: %s(errno: %d)\n");
+    int n = recv(sockfd, recvbuf,MAXLINE, 0);
+    recvbuf[n]='\0';
+    if(strcmp(recvbuf,"no")==0)
+    {
+         printf("该用户已存在，请更换昵称\n");
+         continue;
+    }
+    break; 
+    }while(1);
+
+   
+     
     
     printf("\nWelcome to 'The little house'!\n");
-     printf("Warning:在'The little house'请谨慎使用删除键(Backspace),否则可能会引发灾难\n");
+    printf("Warning:在'The little house'请谨慎使用删除键(Backspace),否则可能会引发灾难\n\n");
+    printf("------------------------------------------------------------------------\n");
+    printf("scp(文件传输)指令说明：\n");
+    printf("格式：scp filename @username\n");
+    printf("说明：1、请注意空格位置\n");
+    printf("      2、filename 表示要传输的文件(绝对路径或相对路径)\n");
+    printf("      3、username 表示要传输的对象\n");
+    printf("      4、本指令可传输任意类型文件\n");
+    printf("示例：scp helloworld.jpg @rjszz\n");
+    printf("------------------------------------------------------------------------\n\n");
     printf("Please enter 'exit' to exit the program\n");
 
 

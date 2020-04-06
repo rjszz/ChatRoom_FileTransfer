@@ -25,7 +25,7 @@
 // };
 extern sem_t sem;
 
-enum {MAXLINE=4096};
+enum {MAXLINE=4096,FILE_NAME_MAX_SIZE=512};
 
 void Error(const char*);
 void Connect(int connfd,sockaddr_in cliaddr);
